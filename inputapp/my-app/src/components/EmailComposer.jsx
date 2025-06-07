@@ -30,11 +30,6 @@ export const EmailComposer = () => {
       addEnterText(email.trim());
     }
   };
-
-  const handleRemoveClick = (emailToRemove) => {
-    setRecipients((prev) => prev.filter((r) => r.value !== emailToRemove));
-  };
-
   const addEnterText = (newEmail) => {
     const isValid = isValidEmail(newEmail);
     const alreadyExists = recipients.some((r) => r.value === newEmail);
@@ -44,6 +39,10 @@ export const EmailComposer = () => {
     }
     setEmail("");
     setType(false);
+  };
+
+  const handleRemoveClick = (emailToRemove) => {
+    setRecipients((prev) => prev.filter((r) => r.value !== emailToRemove));
   };
 
   const handleSuggestionClick = (selectedEmail) => {
