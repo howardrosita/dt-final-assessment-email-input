@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getEmails } from "../services/email.service.ts";
 import SuggestionEmail from "./EmailSuggest.jsx";
 import RecipientsList from "./Reciepients.jsx";
+
 export const EmailComposer = () => {
   const [email, setEmail] = useState("");
   const [suggestionEmail, setSuggestionEmail] = useState([]);
@@ -29,9 +30,11 @@ export const EmailComposer = () => {
       addEnterText(email.trim());
     }
   };
+
   const handleRemoveClick = (emailToRemove) => {
     setRecipients((prev) => prev.filter((r) => r.value !== emailToRemove));
   };
+
   const addEnterText = (newEmail) => {
     const isValid = isValidEmail(newEmail);
     const alreadyExists = recipients.some((r) => r.value === newEmail);
@@ -42,6 +45,7 @@ export const EmailComposer = () => {
     setEmail("");
     setType(false);
   };
+
   const handleSuggestionClick = (selectedEmail) => {
     const isValid = isValidEmail(selectedEmail);
     const alreadyExists = recipients.some((r) => r.value === selectedEmail);
@@ -52,6 +56,7 @@ export const EmailComposer = () => {
     setEmail("");
     setType(false);
   };
+
   useEffect(() => {
     setTimeout(() => {
       getEmails(email).then((data) => {

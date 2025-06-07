@@ -19,10 +19,14 @@ body {
   border-radius: 10px;
   flex-wrap: wrap;
   background-color: #fff;
+  width: 100%;
 }
 .textboxWrapper input {
   border: none;
   height: 30px;
+}
+.textboxWrapper input:focus {
+  outline: none;
 }
 .recipient-item {
   display: inline-flex;
